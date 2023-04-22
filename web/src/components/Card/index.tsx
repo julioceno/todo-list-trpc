@@ -1,4 +1,11 @@
-import { Box, Button, Divider, Typography, styled } from '@mui/material';
+import {
+  Box,
+  BoxProps,
+  Button,
+  Divider,
+  Typography,
+  styled,
+} from '@mui/material';
 import { theme } from '../../theme';
 
 const MyCard = styled(Box)(({ isPurple }: { isPurple: boolean }) => {
@@ -16,7 +23,6 @@ const MyCard = styled(Box)(({ isPurple }: { isPurple: boolean }) => {
     borderWidth: '4px',
     borderStyle: 'solid',
     borderColor: color,
-    fontFamily: ['"Montserrat"', 'Open Sans'].join(','),
 
     padding: 10,
     color,
@@ -30,13 +36,13 @@ const MyCard = styled(Box)(({ isPurple }: { isPurple: boolean }) => {
   };
 });
 
-interface Props {
+interface Props extends BoxProps {
   isPurple: boolean;
 }
 
-export function Card({ isPurple }: Props) {
+export function Card({ isPurple, ...rest }: Props) {
   return (
-    <MyCard isPurple={isPurple}>
+    <MyCard isPurple={isPurple} {...rest}>
       <Typography fontWeight='500' fontSize={30}>
         Título
       </Typography>
