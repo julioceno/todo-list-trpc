@@ -1,11 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  Button,
-  Divider,
-  Typography,
-  styled,
-} from '@mui/material';
+import { Box, BoxProps, Typography, styled } from '@mui/material';
 import { theme } from '../../theme';
 
 const MyCard = styled(Box)(({ isPurple }: { isPurple: boolean }) => {
@@ -38,13 +31,15 @@ const MyCard = styled(Box)(({ isPurple }: { isPurple: boolean }) => {
 
 interface Props extends BoxProps {
   isPurple: boolean;
+  title: string;
+  description: string;
 }
 
-export function Card({ isPurple, ...rest }: Props) {
+export function Card({ isPurple, title, description, ...rest }: Props) {
   return (
     <MyCard isPurple={isPurple} {...rest}>
       <Typography fontWeight='500' fontSize={30}>
-        Título
+        {title}
       </Typography>
       <Typography
         style={{
@@ -54,10 +49,7 @@ export function Card({ isPurple, ...rest }: Props) {
           WebkitBoxOrient: 'vertical',
         }}
       >
-        Descrição Descrição Descrição Descrição Descrição Descrição Descrição
-        Descrição Descrição Descrição Descrição Descrição Descrição Descrição
-        Descrição Descrição Descrição Descrição Descrição Descrição Descrição
-        Descrição
+        {description}
       </Typography>
     </MyCard>
   );

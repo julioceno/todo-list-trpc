@@ -57,6 +57,8 @@ export function TodoList() {
           return (
             <Card
               isPurple={!(index % 2)}
+              title={item.title}
+              description={item.description}
               onClick={() => setOpenModalUpdate(true)}
             />
           );
