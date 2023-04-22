@@ -4,36 +4,42 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
-import { Form, Formik } from 'formik';
+import { Form, Formik, FormikValues } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { schema } from './validation';
+import { FormTaskInput, schema } from './validation';
 import { FormHelperText } from '@mui/material';
-import { formatList } from '../../utils';
+import { formatList } from '../../../utils';
 
-interface Props {
+export interface ModalFormProps {
   open: boolean;
+  initialValues: FormTaskInput;
+  isUpdate?: boolean;
   handleClose: () => void;
+  handleSubmitAction: (values: FormTaskInput) => void;
 }
 
-export function ModalForm({ open, handleClose }: Props) {
-  function handleCreate() {
-    alert('Ainda não implementado');
-    handleClose();
-  }
+export function ModalForm({
+  open,
+  handleClose,
+  isUpdate = false,
+  handleSubmitAction,
+  initialValues,
+}: ModalFormProps) {
+  const title = isUpdate ? 'Atualize Sua Tarefa' : 'Crie Sua Tarefa';
+  const buttonPrimaryActionTitle = isUpdate ? 'Atualizar' : 'Criar';
 
   return (
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth='md'>
-      <DialogTitle>Crie Sua Tarefa</DialogTitle>
+      <DialogTitle>{title}</DialogTitle>
       <Formik
-        initialValues={{ title: '', description: '' }}
-        onSubmit={handleCreate}
+        initialValues={initialValues}
+        onSubmit={handleSubmitAction}
         validationSchema={toFormikValidationSchema(schema)}
       >
         {({ values, handleBlur, handleChange, handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
             <DialogContent>
               <TextField
-                autoFocus
                 margin='dense'
                 label='Título'
                 name='title'
@@ -45,7 +51,6 @@ export function ModalForm({ open, handleClose }: Props) {
                 value={values.title}
               />
               <TextField
-                autoFocus
                 margin='dense'
                 label='Descrição'
                 name='description'
@@ -67,7 +72,7 @@ export function ModalForm({ open, handleClose }: Props) {
                 Cancelar
               </Button>
               <Button type='submit' variant='contained' fullWidth>
-                Criar
+                {buttonPrimaryActionTitle}
               </Button>
             </DialogActions>
           </Form>

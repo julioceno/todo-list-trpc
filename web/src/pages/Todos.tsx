@@ -1,23 +1,65 @@
-import { Box, Fab, Tooltip, Typography } from '@mui/material';
-import { Card } from '../components';
 import AddIcon from '@mui/icons-material/Add';
-import { theme } from '../theme';
-import { ModalForm } from '../components/Modal';
+import { Box, Fab, Tooltip, Typography } from '@mui/material';
 import { useState } from 'react';
+import { Card, ModalCreateForm, ModalUpdateForm } from '../components';
+import { theme } from '../theme';
 
-const arr = [1, 2, 3, 4];
+const arr = [
+  {
+    title: 'Fazer compras no mercado',
+    description:
+      'Comprar os itens da lista de compras, incluindo frutas, legumes, carne, ovos, pão e leite.',
+  },
+  {
+    title: 'Limpar a casa',
+    description:
+      'Limpar os quartos, banheiros e cozinha, incluindo aspirar o tapete, lavar a louça, tirar o lixo e varrer o chão.',
+  },
+  {
+    title: 'Preparar o jantar',
+    description:
+      'Escolher uma receita, comprar os ingredientes necessários e preparar o jantar para a família.',
+  },
+  {
+    title: 'Fazer exercícios físicos',
+    description:
+      'Ir à academia, fazer uma caminhada ou praticar yoga para manter o corpo em forma e saudável.',
+  },
+  {
+    title: 'Estudar para uma prova',
+    description:
+      'Revisar o material de estudo, fazer exercícios e se preparar para uma prova ou exame importante.',
+  },
+];
 
 export function TodoList() {
-  const [open, setOpen] = useState(false);
+  const [openModalCreate, setOpenModalCreate] = useState(false);
+  const [openModalUpdate, setOpenModalUpdate] = useState(false);
 
   return (
-    <Box px={20} pt={25}>
+    <Box pl={20} pt={25}>
       <Typography variant='h3' fontWeight='600'>
         Gerencie Suas Tarefas
       </Typography>
-      <Box display='flex' gap={10} paddingTop={5} maxWidth='100%'>
+      <Box
+        display='flex'
+        gap={10}
+        pt={5}
+        pr={10}
+        overflow='scroll hidden'
+        sx={{
+          '&::-webkit-scrollbar': {
+            height: '0',
+          },
+        }}
+      >
         {arr.map((item, index) => {
-          return <Card isPurple={!(index % 2)} onClick={() => setOpen(true)} />;
+          return (
+            <Card
+              isPurple={!(index % 2)}
+              onClick={() => setOpenModalUpdate(true)}
+            />
+          );
         })}
       </Box>
       <Tooltip title='Criar nova tarefa' placement='top'>
@@ -29,12 +71,20 @@ export function TodoList() {
             right: theme.spacing(5),
             bottom: theme.spacing(5),
           }}
-          onClick={() => setOpen(true)}
+          onClick={() => setOpenModalCreate(true)}
         >
-          <AddIcon color='#F5F5F5' />
+          <AddIcon />
         </Fab>
       </Tooltip>
-      <ModalForm open={open} handleClose={() => setOpen(false)} />
+
+      <ModalUpdateForm
+        open={openModalUpdate}
+        handleClose={() => setOpenModalUpdate(false)}
+      />
+      <ModalCreateForm
+        open={openModalCreate}
+        handleClose={() => setOpenModalCreate(false)}
+      />
     </Box>
   );
 }

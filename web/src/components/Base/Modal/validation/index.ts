@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const schema = z.object({
+export const schema = z.object({
   title: z.string({
     required_error: 'Título obrigatório',
   }),
@@ -9,4 +9,4 @@ const schema = z.object({
   }),
 });
 
-export { schema };
+export type FormTaskInput = z.TypeOf<typeof schema>;

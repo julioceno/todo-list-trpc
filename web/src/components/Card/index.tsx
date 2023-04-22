@@ -18,7 +18,7 @@ const MyCard = styled(Box)(({ isPurple }: { isPurple: boolean }) => {
     flexDirection: 'column',
 
     height: '15rem',
-    width: '20rem',
+    minWidth: '20rem',
 
     borderWidth: '4px',
     borderStyle: 'solid',

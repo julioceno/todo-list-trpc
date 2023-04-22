@@ -11,6 +11,9 @@ const theme = createTheme({
     background: {
       default: '#F5F5F5',
     },
+    icon: {
+      main: '#F5F5F5',
+    },
   },
   typography: {
     h3: {
@@ -21,3 +24,17 @@ const theme = createTheme({
 });
 
 export { theme };
+
+declare module '@mui/material/styles' {
+  interface Theme {
+    fontSize: (factor: number) => string;
+  }
+
+  interface Palette {
+    icon: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    icon: PaletteOptions['primary'];
+  }
+}
