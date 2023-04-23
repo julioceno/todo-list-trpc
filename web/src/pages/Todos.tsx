@@ -55,12 +55,14 @@ export function TodoList() {
       >
         {arr.map((item, index) => {
           return (
-            <Card
-              isPurple={!(index % 2)}
-              title={item.title}
-              description={item.description}
-              onClick={() => setOpenModalUpdate(true)}
-            />
+            <Box key={index}>
+              <Card
+                isPurple={!(index % 2)}
+                title={item.title}
+                description={item.description}
+                onClick={() => setOpenModalUpdate(true)}
+              />
+            </Box>
           );
         })}
       </Box>
