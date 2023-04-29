@@ -13,7 +13,6 @@ export function ModalCreateForm({ handleClose, open }: Props) {
       open={open}
       handleClose={handleClose}
       handleSubmitAction={handleSubmit}
-      initialValues={{ description: '', title: '' }}
     />
   );
 }

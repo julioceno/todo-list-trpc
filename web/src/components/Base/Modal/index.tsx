@@ -4,15 +4,16 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
-import { Form, Formik, FormikValues } from 'formik';
+import { Form, Formik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { FormTaskInput, schema } from './validation';
 import { FormHelperText } from '@mui/material';
 import { formatList } from '../../../utils';
+import { useMemo } from 'react';
 
 export interface ModalFormProps {
   open: boolean;
-  initialValues: FormTaskInput;
+  initialValuesCustomer?: FormTaskInput;
   isUpdate?: boolean;
   handleClose: () => void;
   handleSubmitAction: (values: FormTaskInput) => void;
@@ -23,10 +24,16 @@ export function ModalForm({
   handleClose,
   isUpdate = false,
   handleSubmitAction,
-  initialValues,
+  initialValuesCustomer,
 }: ModalFormProps) {
   const title = isUpdate ? 'Atualize Sua Tarefa' : 'Crie Sua Tarefa';
   const buttonPrimaryActionTitle = isUpdate ? 'Atualizar' : 'Criar';
+
+  const initialValues: FormTaskInput = useMemo(() => {
+    return initialValuesCustomer
+      ? initialValuesCustomer
+      : { title: '', description: '' };
+  }, [initialValuesCustomer]);
 
   return (
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth='md'>

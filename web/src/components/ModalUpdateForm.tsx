@@ -14,7 +14,7 @@ export function ModalUpdateForm({ handleClose, open }: Props) {
       handleClose={handleClose}
       handleSubmitAction={handleSubmit}
       isUpdate
-      initialValues={{ description: '', title: '' }}
+      initialValuesCustomer={{ description: '', title: '' }}
     />
   );
 }
