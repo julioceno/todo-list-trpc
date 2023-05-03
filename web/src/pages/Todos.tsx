@@ -3,38 +3,13 @@ import { Box, Fab, Tooltip, Typography } from '@mui/material';
 import { useState } from 'react';
 import { Card, ModalCreateForm, ModalUpdateForm } from '../components';
 import { theme } from '../theme';
-
-const arr = [
-  {
-    title: 'Fazer compras no mercado',
-    description:
-      'Comprar os itens da lista de compras, incluindo frutas, legumes, carne, ovos, pão e leite.',
-  },
-  {
-    title: 'Limpar a casa',
-    description:
-      'Limpar os quartos, banheiros e cozinha, incluindo aspirar o tapete, lavar a louça, tirar o lixo e varrer o chão.',
-  },
-  {
-    title: 'Preparar o jantar',
-    description:
-      'Escolher uma receita, comprar os ingredientes necessários e preparar o jantar para a família.',
-  },
-  {
-    title: 'Fazer exercícios físicos',
-    description:
-      'Ir à academia, fazer uma caminhada ou praticar yoga para manter o corpo em forma e saudável.',
-  },
-  {
-    title: 'Estudar para uma prova',
-    description:
-      'Revisar o material de estudo, fazer exercícios e se preparar para uma prova ou exame importante.',
-  },
-];
+import { trpc } from '../utils/trpc';
 
 export function TodoList() {
   const [openModalCreate, setOpenModalCreate] = useState(false);
   const [openModalUpdate, setOpenModalUpdate] = useState(false);
+
+  const tasks = trpc.getTasks.useQuery();
 
   return (
     <Box pl={20} pt={25}>
@@ -53,7 +28,7 @@ export function TodoList() {
           },
         }}
       >
-        {arr.map((item, index) => {
+        {tasks.data?.map((item, index) => {
           return (
             <Box key={index}>
               <Card

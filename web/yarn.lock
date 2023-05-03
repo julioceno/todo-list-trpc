@@ -674,6 +674,34 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
   integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
 
+"@tanstack/query-core@4.29.5":
+  version "4.29.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.29.5.tgz#a0273e88bf2fc102c4c893dc7c034127b67fd5d9"
+  integrity sha512-xXIiyQ/4r9KfaJ3k6kejqcaqFXXBTzN2aOJ5H1J6aTJE9hl/nbgAdfF6oiIu0CD5xowejJEJ6bBg8TO7BN4NuQ==
+
+"@tanstack/react-query@^4.29.5":
+  version "4.29.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.29.5.tgz#3890741291f9f925933243d78bd74dfc59d64208"
+  integrity sha512-F87cibC3s3eG0Q90g2O+hqntpCrudKFnR8P24qkH9uccEhXErnJxBC/AAI4cJRV2bfMO8IeGZQYf3WyYgmSg0w==
+  dependencies:
+    "@tanstack/query-core" "4.29.5"
+    use-sync-external-store "^1.2.0"
+
+"@trpc/client@^10.23.0":
+  version "10.23.0"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-10.23.0.tgz#cf1549d4c198038ae711cd1552c1d68f690d1d28"
+  integrity sha512-7hTh9OjVIx4Co3kUyIu94SjbUIuS2WKl3E5BMseYbNOHfeY5rqwkCsw0N5EHWszhIVttUMDE0oCf10tNhYEq1A==
+
+"@trpc/react-query@^10.23.0":
+  version "10.23.0"
+  resolved "https://registry.yarnpkg.com/@trpc/react-query/-/react-query-10.23.0.tgz#fa04d6fc65f14165692b5de6ffc57476926b71bd"
+  integrity sha512-50vfR3HtOEcjCQMuHSGTFOG6W9WunvcI8msTp84UNAqZ9dz4YdjgBVNn2wxqB5LAQ6AGlcKuzJWjEj3yO56tvw==
+
+"@trpc/server@^10.23.0":
+  version "10.23.0"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.23.0.tgz#b73c648f592a5bc88b9a2a64594ce8e952a10380"
+  integrity sha512-0CPfGZK3v3gfAL8ylV5vDJVBQtPp47EB4Vgx6WItSXmwYQlLC39ZC3gkZ4I5cGpQKl4l3QrNNeUvIcse4hlMxA==
+
 "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -2057,6 +2085,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-sync-external-store@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 vite@^4.3.0:
   version "4.3.1"
